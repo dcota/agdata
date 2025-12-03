@@ -1,0 +1,169 @@
+/* GENERAL */
+body {
+  scroll-behavior: smooth;
+  font-family: "Inter", Arial, sans-serif;
+}
+
+/* HERO */
+#hero {
+  height: 100vh;
+  background: url("images/photo1.jpeg") center center / cover no-repeat fixed;
+  position: relative;
+}
+
+#hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  /* Dark overlay for readability */
+  background: rgba(0, 0, 0, 0.55);
+}
+
+#hero .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* CTA */
+#cta {
+  background: linear-gradient(135deg, #008c4a, #005f30);
+}
+
+/* Feature Box Hover */
+.feature-box {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Navbar link hover */
+.nav-link:hover {
+  color: #0d6efd;
+}
+
+.scroll-arrow {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  animation: arrow-bounce 1.6s infinite ease-in-out;
+  cursor: pointer;
+}
+
+.arrow-big {
+  width: 55px;
+  height: 55px;
+  stroke: white;
+  stroke-width: 2.5;
+  fill: none;
+}
+
+@keyframes arrow-bounce {
+  0% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(18px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+}
+
+/* SVG ICONS – JS-driven line draw (no CSS animation here) */
+.svg-icon {
+  width: 80px;
+  height: 80px;
+  display: block;
+  margin: 0 auto 15px;
+}
+
+.svg-line {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  /* JS will set proper dasharray / dashoffset based on path length */
+}
+
+/* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: #0d6efd;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  z-index: 999;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+}
+
+.back-to-top svg {
+  width: 28px;
+  height: 28px;
+  stroke: #fff;
+  stroke-width: 2.5;
+  fill: none;
+}
+
+.back-to-top:hover {
+  transform: translateY(-4px);
+  background: #0b5ed7;
+}
+
+/* Planet section cards */
+#planet .planet-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#planet .planet-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Planet icons */
+.planet-icon svg {
+  width: 60px;
+  height: 60px;
+  stroke: #2c5e2c; /* eco-green color */
+  stroke-width: 2.2;
+  fill: none;
+}
+
+/* Section title */
+#planet h2 {
+  color: #2c5e2c;
+}
+
+/* Planet icons: line-draw preparation */
+.planet-svg {
+  width: 60px;
+  height: 60px;
+  stroke: #2c5e2c;
+  stroke-width: 2.2;
+  fill: none;
+}
+
+.planet-svg path,
+.planet-svg circle {
+  stroke-dasharray: 700;
+  stroke-dashoffset: 700;
+}
