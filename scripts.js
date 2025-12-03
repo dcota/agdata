@@ -205,4 +205,59 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Start observing
   planetWrappers.forEach((wrapper) => planetObserver.observe(wrapper));
+  // Counter animation
+  const counters = document.querySelectorAll(".impact-number");
+  let counterStarted = false;
+
+  function animateCounters() {
+    if (counterStarted) return; // prevent retriggering
+
+    counters.forEach((counter) => {
+      const target = +counter.getAttribute("data-target");
+      let count = 0;
+      const increment = target / 50; // speed here
+
+      const updateCount = () => {
+        count += increment;
+        if (count < target) {
+          counter.textContent = Math.floor(count);
+          requestAnimationFrame(updateCount);
+        } else {
+          counter.textContent = target;
+        }
+      };
+
+      updateCount();
+    });
+
+    counterStarted = true;
+  }
+
+  // Trigger when section enters viewport
+  const statsSection = document.querySelector("#impact-stats");
+  const observerStats = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) animateCounters();
+    });
+  });
+  observerStats.observe(statsSection);
+
+  // Optional: fade-in timeline items on scroll
+  const tlItems = document.querySelectorAll(".timeline-item");
+  const tlObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          tlObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  tlItems.forEach((item) => {
+    item.classList.add("before-visible");
+    tlObserver.observe(item);
+  });
 });

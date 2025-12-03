@@ -4,6 +4,10 @@ body {
   font-family: "Inter", Arial, sans-serif;
 }
 
+section {
+  scroll-margin-top: calc(80px + 20px);
+}
+
 /* HERO */
 #hero {
   height: 100vh;
@@ -25,8 +29,8 @@ body {
   z-index: 2;
 }
 
-/* CTA */
-#cta {
+/* resources */
+#resources {
   background: linear-gradient(135deg, #008c4a, #005f30);
 }
 
@@ -166,4 +170,367 @@ body {
 .planet-svg circle {
   stroke-dasharray: 700;
   stroke-dashoffset: 700;
+}
+
+/* Full-width organic wave line before section title */
+.about-wave {
+  width: 100%;
+  height: 90px;
+  display: block;
+  margin: 0 auto 20px auto;
+}
+
+.about-wave path {
+  fill: none;
+  stroke: #2c5e2c;
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-dasharray: 1800;
+  stroke-dashoffset: 1800;
+  animation: waveDraw 1.8s ease-out forwards;
+}
+
+@keyframes waveDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Wrap each card so we can add true spacing between columns */
+.about-card-wrapper {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* Light green card */
+.about-card {
+  background: #eaf7ec;
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid #d6efd8;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  height: 100%;
+}
+
+/* Flex container for text + icon */
+.about-card-content {
+  display: flex;
+  align-items: center; /* ➜ icon vertically centered */
+  justify-content: space-between;
+  gap: 25px;
+}
+
+/* Icons */
+.about-icon svg {
+  width: 90px;
+  height: 90px;
+  stroke: #2c5e2c;
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0; /* prevents shrinking on small layouts */
+}
+
+.about-icon svg path,
+.about-icon svg circle,
+.about-icon svg rect,
+.about-icon svg line {
+  stroke: #2c5e2c !important;
+  stroke-width: 3;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Text block occupies remaining space */
+.about-text {
+  flex: 1;
+}
+
+/* Make card content use full height and separate text from icon */
+.about-card-inner {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  position: relative;
+}
+
+/* Center icon relative to entire card height */
+.about-icon {
+  display: flex;
+  align-items: center; /* CENTER VERTICALLY */
+}
+
+/* Mobile stacking */
+@media (max-width: 768px) {
+  .about-card-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .about-icon svg {
+    margin-top: 15px;
+  }
+}
+
+/* Partnership Section */
+#partnership {
+  background: #ffffff;
+}
+
+/* Section decorative wave line (same style as previous section) */
+.section-wave {
+  width: 100%;
+  height: 90px;
+  margin-bottom: 10px;
+}
+
+.section-wave path {
+  fill: none;
+  stroke: #2c5e2c;
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-dasharray: 1800;
+  stroke-dashoffset: 1800;
+  animation: waveDraw 1.8s ease-out forwards;
+}
+
+/* Reuse existing animation */
+@keyframes waveDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.subtitle {
+  max-width: 700px;
+  margin: 0 auto;
+  color: #555;
+  line-height: 1.6;
+}
+
+#impact-stats {
+  background: #f8fdf8;
+}
+
+.impact-icon svg {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.impact-number {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #2c5e2c;
+}
+
+.impact-label {
+  font-size: 1.1rem;
+  color: #444;
+  margin-top: -5px;
+}
+
+/* =========================================================
+   HORIZONTAL TIMELINE (FINAL CLEAN VERSION)
+   ========================================================= */
+
+.timeline-horizontal {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 60px;
+  padding: 60px 0;
+  width: 100%;
+}
+
+/* Horizontal line that connects dots */
+.timeline-horizontal::before {
+  content: "";
+  position: absolute;
+  top: 75px; /* aligns with dot center */
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #2c5e2c33; /* green soft line */
+  z-index: 1;
+}
+
+/* Timeline items arranged horizontally */
+.timeline-horizontal .timeline-item {
+  width: 25%; /* adjust if # of items changes */
+  text-align: center;
+  position: relative;
+  z-index: 2; /* content stays above line */
+  margin: 0; /* removes vertical spacing */
+  padding: 0; /* removes old padding */
+}
+
+/* Dots / Icons */
+.timeline-horizontal .timeline-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 3px solid #2c5e2c;
+  background: white;
+  position: relative; /* NOT absolute */
+  margin: 0 auto 15px; /* centers icon */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3; /* above line */
+}
+
+/* Text styling */
+.timeline-horizontal .timeline-content h4 {
+  color: #2c5e2c;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.timeline-horizontal .timeline-content p {
+  margin: 0;
+  color: #444;
+}
+
+/* =========================================================
+   MOBILE VERSION
+   ========================================================= */
+
+@media (max-width: 768px) {
+  /* Stack vertically */
+  .timeline-horizontal {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+    padding: 40px 0;
+    position: relative;
+  }
+
+  /* Vertical line */
+  .timeline-horizontal::before {
+    content: "";
+    position: absolute;
+    left: 14px; /* where the dots sit */
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: #2c5e2c33;
+    z-index: 1;
+  }
+
+  /* Items take full width */
+  .timeline-horizontal .timeline-item {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    text-align: left;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Dot alignment */
+  .timeline-horizontal .timeline-icon {
+    position: relative;
+    width: 28px;
+    height: 28px;
+    border-width: 3px;
+    margin: 0;
+    margin-right: 15px; /* space between dot and text */
+  }
+
+  /* TEXT to the right of the dot */
+  .timeline-horizontal .timeline-content {
+    margin: 0;
+  }
+
+  /* Heading & paragraph aligned left */
+  .timeline-horizontal .timeline-content h4,
+  .timeline-horizontal .timeline-content p {
+    text-align: left;
+  }
+}
+
+/* resources card links */
+.resources-card {
+  text-decoration: none;
+  color: white;
+  display: block;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.resources-card-inner {
+  padding: 30px 20px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(4px);
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.resources-card:hover .resources-card-inner {
+  background: rgba(255, 255, 255, 0.22);
+  transform: translateY(-4px);
+}
+
+.resources-card svg {
+  stroke-width: 2.2;
+}
+
+.project-logo {
+  width: 140px; /* adjust if needed */
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.eu-flag {
+  width: 110px;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer {
+  background: #f4f7f4;
+  border-top: 1px solid #d8e5d8;
+}
+
+.footer-link {
+  color: #2c5e2c;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+  color: #204620;
+}
+
+.text-footer-title {
+  color: #2c5e2c;
+  margin-bottom: 8px;
+}
+
+.footer p,
+.footer a {
+  color: #6f7a6f;
+}
+
+/* Mobile spacing */
+@media (max-width: 768px) {
+  .project-logo,
+  .eu-flag {
+    margin-bottom: 20px;
+  }
+}
+
+/* Mobile spacing & alignment */
+@media (max-width: 768px) {
+  .footer-link {
+    margin-top: 8px;
+  }
 }
